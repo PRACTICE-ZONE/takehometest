@@ -3,6 +3,7 @@ import { useForm } from 'react-hook-form';
 
 function App() {
   const { register, handleSubmit, errors } = useForm();
+  const [message, setMessage] = useState('')
 
   const onSubmit = (data) => {
     console.log(data);
