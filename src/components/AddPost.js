@@ -5,7 +5,7 @@ import { AppContext } from '../App';
 
 const AddPost = () => {
     const { register, handleSubmit, errors } = useForm();
-  // const [message, setMessage] = useState('')
+  const [message, setMessage] = useState('')
   const {post, setPost} = useContext(AppContext);
 
   const onSubmit = (data) => {
@@ -21,7 +21,7 @@ const AddPost = () => {
     .then((response) => {
       if(response.data.status === 'created') {
         setPost(response.data.post)
-        // setMessage('Post added successfully')
+        setMessage('Post added successfully')
       }
     })
   };
@@ -29,12 +29,12 @@ const AddPost = () => {
   return (
     <div>
  <h1>Photos field</h1>
-      {/* {message && (
+      {message && (
                 <div className="modal-header col-12">
                   <div className="alert alert-success col-12" role="alert">{message}</div>
                   <button type="button" onClick={() => { setMessage(''); }} className="btn-close alert-success close-button" data-bs-dismiss="modal" aria-label="close" />
                 </div>
-                )} */}
+                )}
       <form className="form" onSubmit={handleSubmit(onSubmit)}>
       <div className="form-floating mb-2 col-10">
                     <input
