@@ -11,7 +11,6 @@ const DisplayPost = () => {
         axios.get('http://localhost:3000/posts')
         .then((response) => {
         setPost(response.data)
-        console.log("Respost", response.data);
         })
     }, [setPost])
 
@@ -28,8 +27,13 @@ const DisplayPost = () => {
             {
                 Array.from(post).map((data) => {
                     return (
-                        <div className="col-3">
-                            {data.caption}
+                        <div className="col-3"  key = {data.id}>
+                            <div className="card">
+                                <img className="card-img-top" src={data.imageUrl} alt="url for foto" />
+                                <div className="card-body">
+                                    <p className="card-text">{data.caption}</p>
+                                </div>
+                            </div>
                         </div>
                     )
                 })
