@@ -26,7 +26,7 @@ const DisplayPost = () => {
     <div className='container border border-info'>
         <div className="row">
             {
-                post.map((data) => {
+                Array.from(post).map((data) => {
                     return (
                         <div className="col-3">
                             {data.caption}
