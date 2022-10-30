@@ -1,4 +1,3 @@
-
 import React, { useContext, useState } from 'react'
 import axios from 'axios';
 import { useForm } from 'react-hook-form';
@@ -6,26 +5,24 @@ import { AppContext } from '../App';
 
 const AddPost = () => {
     const { register, handleSubmit, errors } = useForm();
-  const [message, setMessage] = useState('')
-  const [post, setPost] = useContext(AppContext)
-
-  const addToApi = async (data) => {
-    const response = await axios.post('https://jsonplaceholder.typicode.com/posts', data)
-    console.log(response)
-    setPost([...post, response.data])
-    setMessage('Post added successfully')
-  }
-
+  // const [message, setMessage] = useState('')
+  const {post, setPost} = useContext(AppContext);
 
   const onSubmit = (data) => {
     const formData = new FormData()
     const post = { ...data, image: data.image[0] }
     formData.append('post[caption]', post.caption)
     formData.append('post[image]', post.image)
-
-    axios.post('http://localhost:3001/posts', formData, {
+    console.log(formData)
+    axios.post('http://localhost:3000/posts', formData, {
       headers: { 'Content-Type': 'multipart/form-data' },
       withCredentials: true,
+    })
+    .then((response) => {
+      if(response.data.status === 'created') {
+        setPost(response.data.post)
+        // setMessage('Post added successfully')
+      }
     })
   };
 
