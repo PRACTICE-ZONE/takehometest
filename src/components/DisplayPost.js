@@ -1,6 +1,7 @@
 import React, { useContext, useEffect } from 'react'
 import axios from 'axios'
 import { AppContext } from '../App'
+import Loading from './Loading';
 
 
 const DisplayPost = () => {
@@ -15,8 +16,9 @@ const DisplayPost = () => {
     }, [setPost])
 
     if (post.length === 0) {
+        console.log(post.length, 'Length');
         return (
-          <h1>Loading ...</h1>
+          <Loading />
         );
       }
     
