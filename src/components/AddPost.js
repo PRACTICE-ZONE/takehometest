@@ -1,4 +1,6 @@
+
 import React, { useState } from 'react'
+import axios from 'axios';
 import { useForm } from 'react-hook-form';
 
 const AddPost = () => {
@@ -6,7 +8,15 @@ const AddPost = () => {
   const [message, setMessage] = useState('')
 
   const onSubmit = (data) => {
-    console.log(data);
+    const formData = new FormData()
+    const post = { ...data, image: data.image[0] }
+    formData.append('post[caption]', post.caption)
+    formData.append('post[image]', post.image)
+
+    axios.post('http://localhost:3001/posts', formData, {
+      headers: { 'Content-Type': 'multipart/form-data' },
+      withCredentials: true,
+    })
   };
 
   return (
