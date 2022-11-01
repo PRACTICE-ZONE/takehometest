@@ -27,10 +27,10 @@ const AddPost = () => {
 
   return (
     <div>
- <h1>Photos field</h1>
+ <h1 className='display-3 d-flex justify-content-center'>Posters</h1>
       
       <form className="form" onSubmit={handleSubmit(onSubmit)}>
-      <div className="form-floating mb-2 col-10">
+      <div className="form-floating mb-2 col-12">
                     <input
                       type="file"
                       name="image"
@@ -42,7 +42,7 @@ const AddPost = () => {
                     />
                     <label htmlFor="floatingInputImage">Image</label>
                   </div>
-                  <div className="form-floating mb-2 col-10">
+                  <div className="form-floating mb-2 col-12">
                     <input
                       type="text"
                       className="form-control"
@@ -54,7 +54,7 @@ const AddPost = () => {
                     <label htmlFor="floatingInput">Caption</label>
                   </div>
                   <div className="form-floating mb-3 col-10">
-                    <button type="submit" className="btn btn-primary ">Add Car</button>
+                    <button type="submit" className="btn btn-primary ">Upload</button>
                   </div>
       </form>
     </div>
